@@ -14,3 +14,16 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: result.message }, { status: 400 });
   }
 }
+
+export async function GET(req:Request) {
+  try{
+    await connectToDatabase();
+    const {searchParams} = new URL(req.url)
+    const limit = searchParams.get("limit")
+
+    // const posts = await Post.find({}).populate()
+  }catch (error){
+    const result = error as Error;
+    return NextResponse.json({ error: result.message }, { status: 400 });
+  }
+}
