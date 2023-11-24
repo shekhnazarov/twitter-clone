@@ -10,7 +10,6 @@ import Link from "next/link";
 
 const FollowBar = () => {
   const { isLoading, users } = useUsers(5);
-  console.log(users);
 
   return (
     <div className="py-4 hidden lg:block w-[266px]">

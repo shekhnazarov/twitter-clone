@@ -1,21 +1,21 @@
 "use client";
 
-import { IUser } from "@/types";
-import React, { useState } from "react";
+import { IPost, IUser } from "@/types";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Button from "../ui/button";
 import { toast } from "../ui/use-toast";
 import axios from "axios";
-import { log } from "console";
 
 interface Props {
   placeholder: string;
   isComment?: boolean;
   postId?: string;
   user: IUser;
+  setPosts: Dispatch<SetStateAction<IPost[]>>;
 }
 
-const Form = ({ placeholder, user }: Props) => {
+const Form = ({ placeholder, user, setPosts }: Props) => {
   const [body, setBody] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,6 +26,14 @@ const Form = ({ placeholder, user }: Props) => {
         body,
         userId: user._id,
       });
+      const newPost = {
+        ...data,
+        user,
+        likes: 0,
+        hasLiked: false,
+        comments: 0,
+      };
+      setPosts((prev) => [newPost, ...prev]);
       setIsLoading(false);
       setBody("");
       console.log(data);

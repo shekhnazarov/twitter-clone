@@ -15,9 +15,6 @@ const Auth = () => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
 
-  const { data } = useSession();
-  console.log(data, "data");
-
   const onOpenRegisterModal = useCallback(() => {
     registerModal.onOpen();
   }, [registerModal]);
