@@ -21,7 +21,7 @@ const PostItem = ({ post, user, setPosts }: Props) => {
   const router = useRouter();
 
   const onDelete = async (e: any) => {
-    e.stopPropogation();
+    e.stopPropagation();
     try {
       setIsLoading(true);
       await axios.delete("/api/posts", {
@@ -42,7 +42,7 @@ const PostItem = ({ post, user, setPosts }: Props) => {
   };
 
   const onLike = async (e: any) => {
-    e.stopPropogation();
+    e.stopPropagation();
 
     try {
       setIsLoading(true);
